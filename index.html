@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My World Cup 2026 Predictions</title>
+<style>
+  :root{
+    --bg:#0d1016; --card:#161b23; --card2:#1b212b; --line:#2a313d; --text:#eef1f6;
+    --muted:#8b93a3; --accent:#3ddc84; --accent2:#5b9dff;
+    --result:#ffd34d; --hit:#1f7a4d; --hitbg:rgba(61,220,132,.16);
+    --pool1:#3ddc84; --pool2:#5b9dff; --pool3:#ffb454; --pool4:#ff6b8a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--text);line-height:1.5;font-size:16px}
+  header{padding:30px 26px 18px;border-bottom:1px solid var(--line)}
+  h1{margin:0;font-size:27px;font-weight:800;letter-spacing:-.4px}
+  .sub{color:var(--muted);font-size:14px;margin-top:5px}
+  .wrap{max-width:1180px;margin:0 auto;padding:22px 26px 90px}
+
+  /* tabs */
+  .tabs{display:flex;gap:7px;flex-wrap:wrap;margin:20px 0 8px}
+  .tab{padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);
+       color:var(--muted);cursor:pointer;font-size:14px;font-weight:600;transition:.15s}
+  .tab:hover{color:var(--text);border-color:#3a4350}
+  .tab.active{background:var(--accent);color:#08130c;border-color:var(--accent)}
+
+  /* group-by control */
+  .controls{display:flex;align-items:center;gap:10px;margin:18px 0 16px;flex-wrap:wrap}
+  .controls .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);font-weight:700}
+  .seg{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .seg button{border:none;background:transparent;color:var(--muted);padding:8px 16px;font-size:14px;
+              font-weight:600;cursor:pointer;transition:.15s}
+  .seg button:hover{color:var(--text)}
+  .seg button.on{background:var(--accent2);color:#04111f}
+
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 16px;font-size:13px;color:var(--muted)}
+  .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
+  .legend .hit-key{background:var(--hitbg);color:var(--accent);padding:2px 8px;border-radius:6px;font-weight:700}
+
+  .sec-h{font-size:15px;font-weight:800;letter-spacing:.3px;margin:26px 0 10px;color:var(--text);
+         display:flex;align-items:center;gap:10px}
+  .sec-h::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* table */
+  table{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);
+        border:1px solid var(--line);border-radius:14px;margin-bottom:22px}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:#222a36;color:var(--muted);font-weight:700;font-size:12px;
+     text-transform:uppercase;letter-spacing:.5px;
+     position:sticky;top:0;z-index:5;box-shadow:0 2px 0 var(--line)}
+  thead th:first-child{border-top-left-radius:13px}
+  thead th:last-child{border-top-right-radius:13px}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:nth-child(even){background:rgba(255,255,255,.018)}
+  tbody tr:hover{background:rgba(91,157,255,.07)}
+
+  td.match{font-weight:700;font-size:15.5px;white-space:nowrap}
+  .stage{color:var(--muted);font-size:12px;font-weight:500;margin-top:2px}
+
+  td.pick{font-weight:800;font-size:19px;font-variant-numeric:tabular-nums;text-align:center;
+          white-space:nowrap;letter-spacing:.5px}
+  td.pick.hit{background:var(--hitbg);color:var(--accent)}
+  .empty-pick{color:#3a4350;font-weight:600}
+
+  th.result-h{color:var(--result)}
+  td.result{text-align:center;font-weight:900;font-size:21px;font-variant-numeric:tabular-nums;
+            color:var(--result);white-space:nowrap;background:rgba(255,211,77,.07);
+            border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  td.result .pend{color:#4a5160;font-size:16px;font-weight:600}
+
+  th.poolcol{text-align:center}
+
+  /* single pool view */
+  .poolcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:18px}
+  .poolcard h3{margin:0 0 3px;font-size:17px}
+  .poolcard a{color:var(--accent2);font-size:13px;text-decoration:none;word-break:break-all}
+  .poolcard .count{color:var(--muted);font-size:13px;margin-top:9px}
+
+  .empty{color:var(--muted);text-align:center;padding:54px 20px;font-size:15px}
+  .empty code{background:var(--card2);padding:3px 7px;border-radius:6px;color:var(--accent)}
+
+  /* mobile: tighten so more fits on a phone screenshot */
+  @media (max-width:620px){
+    .wrap{padding:16px 12px 70px}
+    header{padding:22px 16px 14px}
+    h1{font-size:22px}
+    th,td{padding:9px 9px}
+    td.match{font-size:14px;white-space:normal}
+    td.pick{font-size:17px}
+    td.result{font-size:19px}
+    .tab{padding:8px 13px;font-size:13px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title">My World Cup 2026 Predictions</h1>
+  <div class="sub" id="sub"></div>
+</header>
+<div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div id="view"></div>
+</div>
+
+<script src="data.js"></script>
+<script>
+const D = window.WORLDCUP_DATA || {pools:[]};
+const RESULTS = window.WORLDCUP_RESULTS || {};
+const POOL_COLORS = ["var(--pool1)","var(--pool2)","var(--pool3)","var(--pool4)"];
+document.getElementById("title").textContent = D.meta?.title || "My World Cup 2026 Predictions";
+document.getElementById("sub").textContent = D.meta?.lastUpdated ? ("Updated " + D.meta.lastUpdated) : "";
+
+const colorFor = i => POOL_COLORS[i % POOL_COLORS.length];
+const esc = s => (s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+// Pollaya uses different 3-letter codes — map them to the canonical scheme
+const CODE_ALIAS = {CRS:"KOR",RCH:"CZE",CND:"CAN",SCT:"SCO",TKY:"TUR",PRY:"PAR",
+  ALE:"GER",JAP:"JPN",SUE:"SWE",EGI:"EGY",IRA:"IRN",SAU:"KSA",IRK:"IRQ",
+  ATR:"AUT",CON:"COD",GHN:"GHA",ING:"ENG"};
+const normKey = k => !k ? k : k.split("-").map(c=>CODE_ALIAS[c]||c).join("-");
+
+// ---- build canonical match metadata (group + matchday) from Las Migas (pool 0) ----
+const META = {};            // normKey -> {group, day, idx}
+let seqIdx = 0;
+(D.pools[0]?.predictions || []).forEach(pr=>{
+  const k = normKey(pr.matchKey);
+  const m = /Group\s+([A-L])/i.exec(pr.stage||"");
+  const f = /Fecha\s+(\d)/i.exec(pr.stage||"");
+  if(!META[k]) META[k] = { group: m?m[1].toUpperCase():"?", day: f?f[1]:"?", idx: seqIdx++ };
+});
+
+// ---- build combined rows ----
+function buildRows(){
+  const map = {}; const order = [];
+  D.pools.forEach(p=>{
+    (p.predictions||[]).forEach(pr=>{
+      const k = normKey(pr.matchKey) || (pr.home+"-"+pr.away);
+      if(!map[k]){ map[k] = {key:k, home:pr.home, away:pr.away, picks:{}}; order.push(k); }
+      map[k].picks[p.id] = pr.pick;
+      if(!map[k].home && pr.home) map[k].home = pr.home;
+      if(!map[k].away && pr.away) map[k].away = pr.away;
+    });
+  });
+  return order.map(k=>{
+    const r = map[k];
+    const meta = META[k] || {group:"?",day:"?",idx:999};
+    return {...r, group:meta.group, day:meta.day, idx:meta.idx, result:(RESULTS[k]||"").trim()};
+  });
+}
+
+// ---------- tabs ----------
+const tabs = [{key:"all",label:"All games (combined)"}].concat(D.pools.map(p=>({key:p.id,label:p.name})));
+let active = "all";
+let groupMode = "seq"; // seq | group | day
+function renderTabs(){
+  document.getElementById("tabs").innerHTML = tabs.map(t=>
+    `<div class="tab ${t.key===active?'active':''}" data-k="${t.key}">${esc(t.label)}</div>`).join("");
+  document.querySelectorAll(".tab").forEach(el=>el.onclick=()=>{active=el.dataset.k;render();});
+}
+
+// ---------- combined table ----------
+function tableFor(rows){
+  const head = `<thead><tr>
+      <th>Game</th>
+      <th class="result-h" style="text-align:center">Result</th>` +
+      D.pools.map((p,i)=>`<th class="poolcol" style="color:${colorFor(i)}">${esc(p.name)}</th>`).join("") +
+    `</tr></thead>`;
+  const body = rows.map(r=>{
+    const name = (r.home||"?")+" vs "+(r.away||"?");
+    const resCell = r.result
+      ? `<td class="result">${esc(r.result)}</td>`
+      : `<td class="result"><span class="pend">–</span></td>`;
+    const cells = D.pools.map(p=>{
+      const pk = r.picks[p.id];
+      const hit = pk && r.result && pk.replace(/\s/g,"")===r.result.replace(/\s/g,"");
+      return `<td class="pick${hit?' hit':''}">${pk?esc(pk):'<span class="empty-pick">–</span>'}</td>`;
+    }).join("");
+    return `<tr><td class="match">${esc(name)}<div class="stage">Group ${esc(r.group)} · MD${esc(r.day)}</div></td>${resCell}${cells}</tr>`;
+  }).join("");
+  return `<table>${head}<tbody>${body}</tbody></table>`;
+}
+
+function combinedView(){
+  const rows = buildRows();
+  if(!rows.length) return emptyState();
+
+  const legend = `<div class="legend">` +
+    D.pools.map((p,i)=>`<span><span class="dot" style="background:${colorFor(i)}"></span>${esc(p.name)}</span>`).join("") +
+    `<span class="hit-key">green = exact score hit</span></div>`;
+
+  const controls = `<div class="controls">
+      <span class="lbl">Group by</span>
+      <div class="seg">
+        <button data-m="seq"   class="${groupMode==='seq'?'on':''}">Sequence</button>
+        <button data-m="group" class="${groupMode==='group'?'on':''}">Group</button>
+        <button data-m="day"   class="${groupMode==='day'?'on':''}">Matchday</button>
+      </div></div>`;
+
+  let body = "";
+  if(groupMode==="seq"){
+    body = tableFor(rows.slice().sort((a,b)=>a.idx-b.idx));
+  } else if(groupMode==="group"){
+    const groups = [...new Set(rows.map(r=>r.group))].sort();
+    body = groups.map(g=>{
+      const gr = rows.filter(r=>r.group===g).sort((a,b)=>(a.day-b.day)||(a.idx-b.idx));
+      return `<div class="sec-h">Group ${esc(g)}</div>` + tableFor(gr);
+    }).join("");
+  } else { // day
+    const days = [...new Set(rows.map(r=>r.day))].sort();
+    body = days.map(d=>{
+      const dr = rows.filter(r=>r.day===d).sort((a,b)=>a.idx-b.idx);
+      return `<div class="sec-h">Matchday ${esc(d)}</div>` + tableFor(dr);
+    }).join("");
+  }
+
+  // defer wiring the segmented control until after innerHTML is set
+  setTimeout(()=>document.querySelectorAll(".seg button").forEach(b=>
+    b.onclick=()=>{groupMode=b.dataset.m;render();}),0);
+
+  return controls + legend + body;
+}
+
+// ---------- single pool ----------
+function poolView(pool, idx){
+  const preds = pool.predictions||[];
+  let html = `<div class="poolcard" style="border-left:3px solid ${colorFor(idx)}">
+      <h3>${esc(pool.name)}</h3>
+      <a href="${esc(pool.url)}" target="_blank">${esc(pool.url)}</a>
+      <div class="count">${preds.length} game pick${preds.length===1?'':'s'}</div></div>`;
+  if(!preds.length) return html + emptyState();
+
+  const rows = preds.map(pr=>{
+    const name = (pr.home||"?")+" vs "+(pr.away||"?");
+    const k = normKey(pr.matchKey);
+    const res = (RESULTS[k]||"").trim();
+    const hit = pr.pick && res && pr.pick.replace(/\s/g,"")===res.replace(/\s/g,"");
+    const resCell = res ? `<td class="result">${esc(res)}</td>` : `<td class="result"><span class="pend">–</span></td>`;
+    return `<tr><td class="match">${esc(name)}<div class="stage">${esc(pr.stage||"")}</div></td>
+      ${resCell}
+      <td class="pick${hit?' hit':''}">${esc(pr.pick)||'<span class="empty-pick">–</span>'}</td></tr>`;
+  }).join("");
+  return html + `<table><thead><tr><th>Game</th>
+      <th class="result-h" style="text-align:center">Result</th>
+      <th class="poolcol" style="color:${colorFor(idx)}">My pick</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function emptyState(){
+  return `<div class="empty">No picks loaded yet.<br><br>
+    Edit <code>data.js</code> and paste your predictions, then refresh.</div>`;
+}
+
+function render(){
+  renderTabs();
+  const view = document.getElementById("view");
+  if(active==="all"){ view.innerHTML = combinedView(); return; }
+  const idx = D.pools.findIndex(p=>p.id===active);
+  view.innerHTML = poolView(D.pools[idx], idx);
+}
+render();
+</script>
+</body>
+</html>
