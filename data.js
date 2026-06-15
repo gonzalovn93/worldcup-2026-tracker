@@ -388,7 +388,7 @@ window.WORLDCUP_DATA = {
 window.WORLDCUP_RESULTS = {
   // ---- Matchday 1 ----
   "MEX-RSA": "2-0", "KOR-CZE": "2-1", "CAN-BIH": "1-1", "QAT-SUI": "1-1", "USA-PAR": "4-1", "AUS-TUR": "2-0",
-  "BRA-MAR": "1-1", "HAI-SCO": "0-1", "GER-CUW": "7-1", "CIV-ECU": "", "NED-JPN": "2-2", "SWE-TUN": "",
+  "BRA-MAR": "1-1", "HAI-SCO": "0-1", "GER-CUW": "7-1", "CIV-ECU": "1-0", "NED-JPN": "2-2", "SWE-TUN": "",
   "ESP-CPV": "", "KSA-URU": "", "BEL-EGY": "", "IRN-NZL": "", "FRA-SEN": "", "IRQ-NOR": "",
   "ARG-ALG": "", "AUT-JOR": "", "POR-COD": "", "UZB-COL": "", "ENG-CRO": "", "GHA-PAN": "",
   // ---- Matchday 2 ----
