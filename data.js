@@ -6,7 +6,7 @@
 window.WORLDCUP_DATA = {
   meta: {
     title: "My World Cup 2026 Predictions",
-    lastUpdated: "Jun 20, 2026"
+    lastUpdated: "Jun 22, 2026"
   },
 
   pools: [
@@ -393,9 +393,9 @@ window.WORLDCUP_RESULTS = {
   "ARG-ALG": "3-0", "AUT-JOR": "3-1", "POR-COD": "1-1", "UZB-COL": "1-3", "ENG-CRO": "4-2", "GHA-PAN": "1-0",
   // ---- Matchday 2 ----
   "CZE-RSA": "1-1", "MEX-KOR": "1-0", "SUI-BIH": "4-1", "CAN-QAT": "6-0", "USA-AUS": "2-0", "TUR-PAR": "0-1",
-  "SCO-MAR": "0-1", "BRA-HAI": "3-0", "NED-SWE": "5-1", "TUN-JPN": "", "GER-CIV": "2-1", "ECU-CUW": "0-0",
-  "ESP-KSA": "", "URU-CPV": "", "BEL-IRN": "", "NZL-EGY": "", "ARG-AUT": "", "JOR-ALG": "",
-  "FRA-IRQ": "", "NOR-SEN": "", "POR-UZB": "", "COL-COD": "", "ENG-GHA": "", "PAN-CRO": "",
+  "SCO-MAR": "0-1", "BRA-HAI": "3-0", "NED-SWE": "5-1", "TUN-JPN": "0-4", "GER-CIV": "2-1", "ECU-CUW": "0-0",
+  "ESP-KSA": "4-0", "URU-CPV": "2-2", "BEL-IRN": "0-0", "NZL-EGY": "1-3", "ARG-AUT": "2-0", "JOR-ALG": "",
+  "FRA-IRQ": "3-0", "NOR-SEN": "", "POR-UZB": "", "COL-COD": "", "ENG-GHA": "", "PAN-CRO": "",
   // ---- Matchday 3 ----
   "SUI-CAN": "", "BIH-QAT": "", "MAR-HAI": "", "SCO-BRA": "", "CZE-MEX": "", "RSA-KOR": "",
   "ECU-GER": "", "CUW-CIV": "", "JPN-SWE": "", "TUN-NED": "", "TUR-USA": "", "PAR-AUS": "",
