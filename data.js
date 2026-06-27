@@ -397,8 +397,8 @@ window.WORLDCUP_RESULTS = {
   "ESP-KSA": "4-0", "URU-CPV": "2-2", "BEL-IRN": "0-0", "NZL-EGY": "1-3", "ARG-AUT": "2-0", "JOR-ALG": "1-2",
   "FRA-IRQ": "3-0", "NOR-SEN": "3-2", "POR-UZB": "5-0", "COL-COD": "1-0", "ENG-GHA": "0-0", "PAN-CRO": "0-1",
   // ---- Matchday 3 ----
-  "SUI-CAN": "3-1", "BIH-QAT": "3-1", "MAR-HAI": "4-2", "SCO-BRA": "0-3", "CZE-MEX": "0-3", "RSA-KOR": "1-0",
+  "SUI-CAN": "2-1", "BIH-QAT": "3-1", "MAR-HAI": "4-2", "SCO-BRA": "0-3", "CZE-MEX": "0-3", "RSA-KOR": "1-0",
   "ECU-GER": "2-1", "CUW-CIV": "0-2", "JPN-SWE": "1-1", "TUN-NED": "1-3", "TUR-USA": "3-2", "PAR-AUS": "0-0",
-  "NOR-FRA": "1-4", "SEN-IRQ": "5-0", "URU-ESP": "0-1", "CPV-KSA": "0-2", "NZL-BEL": "1-3", "EGY-IRN": "0-3",
+  "NOR-FRA": "1-4", "SEN-IRQ": "5-0", "URU-ESP": "0-1", "CPV-KSA": "0-0", "NZL-BEL": "1-5", "EGY-IRN": "1-1",
   "PAN-ENG": "", "CRO-GHA": "", "COL-POR": "", "COD-UZB": "", "JOR-ARG": "", "ALG-AUT": ""
 };
