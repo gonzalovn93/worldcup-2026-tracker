@@ -6,7 +6,7 @@
 window.WORLDCUP_DATA = {
   meta: {
     title: "My World Cup 2026 Predictions",
-    lastUpdated: "Jun 26, 2026"
+    lastUpdated: "Jun 28, 2026"
   },
 
   pools: [
@@ -400,5 +400,5 @@ window.WORLDCUP_RESULTS = {
   "SUI-CAN": "2-1", "BIH-QAT": "3-1", "MAR-HAI": "4-2", "SCO-BRA": "0-3", "CZE-MEX": "0-3", "RSA-KOR": "1-0",
   "ECU-GER": "2-1", "CUW-CIV": "0-2", "JPN-SWE": "1-1", "TUN-NED": "1-3", "TUR-USA": "3-2", "PAR-AUS": "0-0",
   "NOR-FRA": "1-4", "SEN-IRQ": "5-0", "URU-ESP": "0-1", "CPV-KSA": "0-0", "NZL-BEL": "1-5", "EGY-IRN": "1-1",
-  "PAN-ENG": "", "CRO-GHA": "", "COL-POR": "", "COD-UZB": "", "JOR-ARG": "", "ALG-AUT": ""
+  "PAN-ENG": "0-2", "CRO-GHA": "2-1", "COL-POR": "0-0", "COD-UZB": "3-1", "JOR-ARG": "1-3", "ALG-AUT": "3-3"
 };
